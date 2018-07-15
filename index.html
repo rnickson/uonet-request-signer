@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>UONET+ Request Signer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/forge/0.7.5/forge.min.js" integrity="sha256-Nxwt1mmv6marltfJxJp/8QzIDEMTrGXI2fKG50K67ao=" crossorigin="anonymous"></script>
+    <script src="signer.js" defer></script>
+    <style>
+        input, textarea {
+            display: block;
+        }
+        .col {
+            float: left;
+            margin-right: 20px;
+        }
+        footer {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>UONET+ Request Signer</h1>
+    </header>
+    <div class="col">
+        <form>
+            <p>
+                <label>Password:
+                    <input id="password" type="text" size="39" required>
+                </label>
+            </p>
+            <p>
+                <label>Certificate (CertyfikatPfx):
+                    <textarea id="cert" cols="50" rows="10" required></textarea>
+                </label>
+            </p>
+            <p>
+                <label>Body to sign (json):
+                    <textarea id="body" cols="50" rows="10" required></textarea>
+                </label>
+            </p>
+            <button id="sign-button">Sign</button>
+        </form>
+    </div>
+    <div class="col">
+        <label>Result (RequestSignatureValue):
+            <textarea id="result" cols="50" rows="29"></textarea>
+        </label>
+    </div>
+    <footer>
+        &copy; 2018 by <a href="https://wulkanowy.github.io">Wulkanowy</a> |
+        <a href="https://github.com/wulkanowy/uonet-request-signer">GitHub</a>
+    </footer>
+</body>
+</html>
