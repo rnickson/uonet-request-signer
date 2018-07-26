@@ -8,6 +8,9 @@
     <style>
         input, textarea {
             display: block;
+            color: #333;
+            background: #fefefe;
+            border: 1px solid silver;
         }
         .col {
             float: left;
@@ -43,9 +46,16 @@
         </form>
     </div>
     <div class="col">
-        <label>Result (RequestSignatureValue):
-            <textarea id="result" cols="50" rows="29"></textarea>
-        </label>
+        <p>
+            <label>Result (RequestSignatureValue):
+                <textarea id="result" cols="50" rows="10" readonly></textarea>
+            </label>
+        </p>
+        <p>
+            <label>Log:
+                <textarea id="log" cols="50" rows="14"></textarea>
+            </label>
+        </p>
     </div>
     <footer>
         &copy; 2018 by <a href="https://wulkanowy.github.io">Wulkanowy</a> |
@@ -57,10 +67,22 @@
             signContent(
                 document.querySelector("#body").value,
                 document.querySelector("#cert").value,
-                document.querySelector("#password").value,
-                document.querySelector("#result")
-            );
+                document.querySelector("#password").value
+            ).then(function(result) {
+                document.querySelector("#result").value = result;
+                logToArea("Signed successfully");
+            });
         });
+
+        window.addEventListener("error", function(evt) {
+            logToArea(evt.message || evt.type);
+        }, true);
+
+        function logToArea(text) {
+            document.querySelector("#log").value = new Date().toLocaleTimeString()
+                + " " + text + "\n"
+                + document.querySelector("#log").value;
+        }
     </script>
 </body>
 </html>

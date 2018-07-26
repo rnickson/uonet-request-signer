@@ -1,19 +1,16 @@
 // https://stackoverflow.com/a/37407739
-function signContent(content, certificate, password, insertTo) {
+function signContent(content, certificate, password) {
     const p12Der = forge.util.decode64(certificate);
     const p12Asn1 = forge.asn1.fromDer(p12Der);
     const pkcs12 = forge.pkcs12.pkcs12FromAsn1(p12Asn1, false, password);
 
-    importCryptoKeyPkcs8(loadPrivateKey(pkcs12), true).then(function (cryptoKey) {
-        const digestToSignBuf = stringToArrayBuffer(content);
-
-        crypto.subtle.sign(
+    return importCryptoKeyPkcs8(loadPrivateKey(pkcs12), true).then(function (cryptoKey) {
+        return crypto.subtle.sign(
             {name: "RSASSA-PKCS1-v1_5"},
             cryptoKey,
-            digestToSignBuf
+            stringToArrayBuffer(content)
         ).then(function (signature) {
-            signatureB64 = forge.util.encode64(arrayBufferToString(signature));
-            insertTo.value = signatureB64;
+            return forge.util.encode64(arrayBufferToString(signature));
         });
     });
 }
