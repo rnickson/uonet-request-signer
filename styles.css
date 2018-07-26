@@ -100,3 +100,16 @@ input, textarea {
 .footer {
     margin: 20px 0 0;
 }
+
+.CodeMirror {
+    border: 1px solid #555;
+    height: 100%;
+    max-width: 720px;
+}
+
+.cm-s-monokai.CodeMirror {
+    background: #333;
+}
+.cm-s-monokai .CodeMirror-gutters {
+    background: #333;
+}
