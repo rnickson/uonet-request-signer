@@ -61,18 +61,6 @@
         <a href="https://github.com/VLO-GDA/uonet-sdk/blob/master/src/main/java/net/maciekmm/uonet/EncryptionUtils.java">Java implementation</a>
     </footer>
     <script>
-        document.querySelector("#sign-button").addEventListener('click', function (e) {
-            e.preventDefault();
-            signContent(
-                document.querySelector("#body").value,
-                document.querySelector("#cert").value,
-                document.querySelector("#password").value
-            ).then(function(result) {
-                document.querySelector("#result").value = result;
-                logToArea("Signed successfully");
-            });
-        });
-
         function uuid() {
             var uuid = "", i, random;
             for (i = 0; i < 32; i++) {
@@ -104,12 +92,24 @@
                 + document.querySelector("#log").value;
         }
 
-        CodeMirror.fromTextArea(document.querySelector("#body"), {
+        const editor = CodeMirror.fromTextArea(document.querySelector("#body"), {
             lineNumbers: true,
             theme: "monokai",
             mode: "application/json",
             gutters: ["CodeMirror-lint-markers"],
             lint: true
+        });
+
+        document.querySelector("#sign-button").addEventListener('click', function (e) {
+            e.preventDefault();
+            signContent(
+                editor.getValue(),
+                document.querySelector("#cert").value,
+                document.querySelector("#password").value
+            ).then(function(result) {
+                document.querySelector("#result").value = result;
+                logToArea("Signed successfully");
+            });
         });
     </script>
 </body>
