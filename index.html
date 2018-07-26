@@ -51,5 +51,16 @@
         &copy; 2018 by <a href="https://wulkanowy.github.io">Wulkanowy</a> |
         <a href="https://github.com/wulkanowy/uonet-request-signer">GitHub</a>
     </footer>
+    <script>
+        document.querySelector("#sign-button").addEventListener('click', function (e) {
+            e.preventDefault();
+            signContent(
+                document.querySelector("#body").value,
+                document.querySelector("#cert").value,
+                document.querySelector("#password").value,
+                document.querySelector("#result")
+            );
+        });
+    </script>
 </body>
 </html>

@@ -1,13 +1,3 @@
-document.querySelector("#sign-button").addEventListener('click', function (e) {
-    e.preventDefault();
-    signContent(
-        document.querySelector("#body").value,
-        document.querySelector("#cert").value,
-        document.querySelector("#password").value,
-        document.querySelector("#result")
-    );
-});
-
 // https://stackoverflow.com/a/37407739
 function signContent(content, certificate, password, insertTo) {
     const p12Der = forge.util.decode64(certificate);
