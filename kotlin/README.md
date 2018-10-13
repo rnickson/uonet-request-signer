@@ -14,7 +14,6 @@ allprojects {
 dependencies {
     implementation 'com.github.wulkanowy:uonet-request-signer:master-SNAPSHOT'
 }
-
 ```
 
 ## Tests

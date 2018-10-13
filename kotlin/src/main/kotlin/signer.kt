@@ -6,7 +6,7 @@ import java.security.PrivateKey
 import java.security.Signature
 import java.util.*
 
-fun signContent(password: String, certificate: String, content: String): String? {
+fun signContent(password: String, certificate: String?, content: String): String {
     val keystore = KeyStore.getInstance("pkcs12").apply {
         load(ByteArrayInputStream(Base64.getDecoder().decode(certificate)), password.toCharArray())
     }
