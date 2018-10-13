@@ -7,7 +7,7 @@
 Via composer:
 
 ```bash
-$ composer require wulkanowy/uonet-request-signer
+$ composer require wulkanowy/uonet-request-signer dev-master
 ```
 
 ## Tests
