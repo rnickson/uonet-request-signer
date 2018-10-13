@@ -16,6 +16,14 @@ dependencies {
 }
 ```
 
+## Usage
+
+```kotlin
+import io.github.wulkanowy.signer.signContent
+
+val signed = signContent(password, certificate, content)
+```
+
 ## Tests
 
 ```bash

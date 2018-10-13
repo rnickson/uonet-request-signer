@@ -4,10 +4,20 @@
 
 ## Instalation
 
-Via composer:
-
 ```bash
 $ composer require wulkanowy/uonet-request-signer dev-master
+```
+
+## Usage
+
+```php
+<?php
+
+use function Wulkanowy\UonetRequestSigner\signContent;
+
+require 'vendor/autoload.php';
+
+$signed = signContent($password, $certificate, $content);
 ```
 
 ## Tests
