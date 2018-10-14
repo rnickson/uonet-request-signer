@@ -1,9 +1,11 @@
-# Uonet+ request signer for Node.js
+# Uonet+ request signer for JavaScript
+
+![npm (scoped)](https://img.shields.io/npm/v/@wulkanowy/uonet-request-signer.svg?style=flat-square)
 
 ## Instalation
 
 ```bash
-$ npm install uonet-request-signer
+$ npm i @wulkanowy/uonet-request-signer
 ```
 
 [Browser demo](https://wulkanowy.github.io/uonet-request-signer/)
@@ -13,7 +15,7 @@ $ npm install uonet-request-signer
 In browser:
 
 ```html
-<script src="signer-browser.js"></script>
+<script src="signer.js"></script>
 <script>
     const signed = signer.signContent(password, certificate, content);
 </script>
@@ -22,7 +24,7 @@ In browser:
 In Node.js:
 
 ```js
-const signer = require("uonet-request-signer/signer-node");
+const signer = require("@wulkanowy/uonet-request-signer");
 
 const signed = signer.signContent(password, certificate, content);
 ```

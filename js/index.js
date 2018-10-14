@@ -1,4 +1,4 @@
-const signer = require("./signer-browser");
+const signer = require("./signer");
 
 forge = require('node-forge');
 crypto = new (require('node-webcrypto-ossl'));
