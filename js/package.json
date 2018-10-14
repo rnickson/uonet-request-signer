@@ -1,0 +1,32 @@
+{
+  "name": "uonet-request-signer",
+  "version": "0.1.0",
+  "description": "UONET+ Request Signer for JS",
+  "main": "",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wulkanowy/uonet-request-signer.git"
+  },
+  "keywords": [
+    "uonet",
+    "wulkanowy",
+    "pkcs12",
+    "forge"
+  ],
+  "author": "Mikołaj Pich <m.pich@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wulkanowy/uonet-request-signer/issues"
+  },
+  "homepage": "https://github.com/wulkanowy/uonet-request-signer/tree/master/node#readme",
+  "dependencies": {
+    "node-forge": "^0.7.6",
+    "node-webcrypto-ossl": "^1.0.38"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}

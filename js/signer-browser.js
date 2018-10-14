@@ -1,19 +1,22 @@
 // https://stackoverflow.com/a/37407739
-function signContent(content, certificate, password) {
-    const p12Der = forge.util.decode64(certificate);
-    const p12Asn1 = forge.asn1.fromDer(p12Der);
-    const pkcs12 = forge.pkcs12.pkcs12FromAsn1(p12Asn1, false, password);
+(function (exports) {
+    exports.signContent = function (password, certificate, content) {
+        const p12Der = forge.util.decode64(certificate);
+        const p12Asn1 = forge.asn1.fromDer(p12Der);
+        const pkcs12 = forge.pkcs12.pkcs12FromAsn1(p12Asn1, false, password);
 
-    return importCryptoKeyPkcs8(loadPrivateKey(pkcs12), true).then(function (cryptoKey) {
-        return crypto.subtle.sign(
-            {name: "RSASSA-PKCS1-v1_5"},
-            cryptoKey,
-            stringToArrayBuffer(content)
-        ).then(function (signature) {
-            return forge.util.encode64(arrayBufferToString(signature));
+        return importCryptoKeyPkcs8(loadPrivateKey(pkcs12), true).then(function (cryptoKey) {
+            return crypto.subtle.sign(
+                {name: "RSASSA-PKCS1-v1_5"},
+                cryptoKey,
+                stringToArrayBuffer(content)
+            ).then(function (signature) {
+                return forge.util.encode64(arrayBufferToString(signature));
+            });
         });
-    });
-}
+    };
+
+}(typeof exports === 'undefined' ? this.signer = {} : exports));
 
 function arrayBufferToString(buffer) {
     let binary = '';

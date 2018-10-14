@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>UONET+ Request Signer by Wulkanowy</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/forge/0.7.5/forge.min.js" integrity="sha256-Nxwt1mmv6marltfJxJp/8QzIDEMTrGXI2fKG50K67ao=" crossorigin="anonymous"></script>
-    <script src="js/signer.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/forge/0.7.6/forge.min.js" integrity="sha256-buw1I7+E0zKU1A6C+nlpXPJIEuA59qCBHeX4Ktd3cLI=" crossorigin="anonymous"></script>
+    <script src="js/signer-browser.js" defer></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/codemirror.min.js" integrity="sha256-uRIJ6Wfou5cTtmcCvQNA9lvsYl8sUbZXxnfG+P79ssY=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/mode/javascript/javascript.min.js" integrity="sha256-soPk2bgFhLwixxuyUzaWVadUMcVwWNE5JZwYdQhL4Xk=" crossorigin="anonymous"></script>
@@ -59,6 +59,7 @@
         &copy; 2018 by <a href="https://wulkanowy.github.io">Wulkanowy</a> |
         <a href="https://github.com/wulkanowy/uonet-request-signer">GitHub</a> |
         <a href="https://github.com/wulkanowy/uonet-request-signer/tree/master/php">PHP implementation</a> |
+        <a href="https://github.com/wulkanowy/uonet-request-signer/tree/master/js">JS implementation</a> |
         <a href="https://github.com/VLO-GDA/uonet-sdk/blob/master/src/main/java/net/maciekmm/uonet/EncryptionUtils.java">Java implementation</a>
     </footer>
     <script>
@@ -103,10 +104,10 @@
 
         document.querySelector("#sign-button").addEventListener('click', function (e) {
             e.preventDefault();
-            signContent(
-                editor.getValue(),
+            signer.signContent(
+                document.querySelector("#password").value,
                 document.querySelector("#cert").value,
-                document.querySelector("#password").value
+                editor.getValue()
             ).then(function(result) {
                 document.querySelector("#result").value = result;
                 logToArea("Signed successfully");
